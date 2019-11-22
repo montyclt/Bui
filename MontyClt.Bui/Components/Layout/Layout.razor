@@ -1,0 +1,50 @@
+﻿<div class="layout">
+    <header>
+        <div class="toolbar">
+            <div class="logo-container">
+                @Logo
+            </div>
+
+            <div class="search-container">
+                @Searcher
+            </div>
+
+            <div class="profile-container">
+                @Profile
+            </div>
+        </div>
+    </header>
+
+    <aside>
+        @Menu
+    </aside>
+
+    <main>
+        @Content
+    </main>
+
+    <footer>
+        @Footer
+    </footer>
+</div>
+
+@code
+{
+    [Parameter]
+    public RenderFragment Logo { get; set; }
+
+    [Parameter]
+    public RenderFragment Searcher { get; set; }
+
+    [Parameter]
+    public RenderFragment Profile { get; set; }
+
+    [Parameter]
+    public RenderFragment Content { get; set; }
+
+    [Parameter]
+    public RenderFragment Footer { get; set; }
+
+    [Parameter]
+    public RenderFragment Menu { get; set; }
+}

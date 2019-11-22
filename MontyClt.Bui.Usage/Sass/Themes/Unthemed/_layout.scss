@@ -1,0 +1,40 @@
+﻿header {
+    .toolbar {
+        border-bottom: 1px solid black;
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+aside {
+    border-right: 1px solid black;
+}
+
+main {
+    .page {
+        .action-bar {
+            padding: 25px;
+            border-bottom: 2px solid black;
+
+            .title {
+                font-size: x-large;
+            }
+
+            .subtitle {
+                font-size: larger;
+            }
+        }
+
+        .content {
+            padding: 25px;
+        }
+    }
+}
+
+footer {
+    border-top: 1px solid black;
+}

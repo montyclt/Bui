@@ -1,0 +1,28 @@
+﻿@page "/"
+
+@using MontyClt.Bui.Components
+@using MontyClt.Bui.Components.Buttons
+@using MontyClt.Bui.Components.Cards
+@using MontyClt.Bui.Components.Inputs
+@using MontyClt.Bui.Components.Layout
+
+<Page Title="Order" Subtitle="#25">
+    <Actions>
+        <Button State="State.Primary">Provisionar</Button>
+        <Button State="State.Danger">Cancelar</Button>
+    </Actions>
+    <Content>
+        <Card>
+            <Header>Pedido #25</Header>
+            <Body>
+                <TextField Value="name" />
+                El nombre es @name
+            </Body>
+        </Card>
+    </Content>
+</Page>
+
+@code
+{
+    string name { get; set; } = "Ivan";
+}

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/structure/admin.css",
+    "inputFile": "Sass/Structure/Admin/main.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/themes/unthemed.css",
+    "inputFile": "Sass/Themes/Unthemed/main.scss"
+  }
+]

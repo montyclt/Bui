@@ -1,0 +1,21 @@
+﻿@page "/"
+@namespace MontyClt.Bui.Usage.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MontyClt.Bui.Usage</title>
+    <base href="~/" />
+    <link href="~/css/reboot.css" rel="stylesheet" />
+    <link href="~/css/structure/admin.css" rel="stylesheet" />
+    <link href="~/css/themes/unthemed.css" rel="stylesheet" />
+</head>
+<body>
+    @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>

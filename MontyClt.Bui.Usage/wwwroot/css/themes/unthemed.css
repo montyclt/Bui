@@ -1,0 +1,55 @@
+﻿header .toolbar {
+  border-bottom: 1px solid black; }
+  header .toolbar .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
+aside {
+  border-right: 1px solid black; }
+
+main .page .action-bar {
+  padding: 25px;
+  border-bottom: 2px solid black; }
+  main .page .action-bar .title {
+    font-size: x-large; }
+  main .page .action-bar .subtitle {
+    font-size: larger; }
+
+main .page .content {
+  padding: 25px; }
+
+footer {
+  border-top: 1px solid black; }
+
+.card {
+  border: 1px dashed black; }
+  .card .header {
+    font-size: larger;
+    border-bottom: 1px dotted black; }
+  .card .footer {
+    border-top: 1px dotted black; }
+
+.button.primary {
+  background-color: blue; }
+
+.button.success {
+  background-color: green; }
+
+.button.warning {
+  background-color: yellow; }
+
+.button.danger {
+  background-color: red; }
+
+.badge .primary {
+  background-color: blue; }
+
+.badge .success {
+  background-color: green; }
+
+.badge .warning {
+  background-color: yellow; }
+
+.badge .danger {
+  background-color: red; }

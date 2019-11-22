@@ -1,0 +1,10 @@
+﻿<span class="badge @State">@ChildContent</span>
+
+@code
+{
+    [Parameter]
+    public State State { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

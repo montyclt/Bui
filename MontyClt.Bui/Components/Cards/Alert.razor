@@ -1,0 +1,29 @@
+﻿@using MontyClt.Bui.Components.Text
+
+<div class="alert @State">
+    <div class="Title">
+        @if (!string.IsNullOrEmpty(Icon))
+        {
+            <Icon Name="@Icon" />
+        }
+        <span>@Title</span>
+    </div>
+    <div class="Content">
+        @ChildContent
+    </div>
+</div>
+
+@code
+{
+    [Parameter]
+    public State State { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Icon { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

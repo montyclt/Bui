@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MontyClt.Bui\MontyClt.Bui.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Sass\Themes\Dark\" />
+    <Folder Include="Sass\Themes\Minimalist\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\reboot.css" />
+  </ItemGroup>
+
+</Project>
