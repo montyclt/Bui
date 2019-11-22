@@ -1,0 +1,9 @@
+﻿<ul class="list">
+    @ChildContent
+</ul>
+
+@code
+{
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

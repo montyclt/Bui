@@ -6,5 +6,9 @@
   {
     "outputFile": "wwwroot/css/themes/unthemed.css",
     "inputFile": "Sass/Themes/Unthemed/main.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/themes/minimalist.css",
+    "inputFile": "Sass/Themes/Minimalist/main.scss"
   }
 ]

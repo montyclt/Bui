@@ -3,21 +3,25 @@
 @using MontyClt.Bui.Components
 @using MontyClt.Bui.Components.Buttons
 @using MontyClt.Bui.Components.Cards
+@using MontyClt.Bui.Components.Data
 @using MontyClt.Bui.Components.Inputs
 @using MontyClt.Bui.Components.Layout
 
 <Page Title="Order" Subtitle="#25">
     <Actions>
-        <Button State="State.Primary">Provisionar</Button>
+        <Button OnClick="() => Console.WriteLine(52)" State="State.Primary">Provisionar</Button>
         <Button State="State.Danger">Cancelar</Button>
     </Actions>
     <Content>
         <Card>
             <Header>Pedido #25</Header>
             <Body>
-                <TextField Value="name" />
-                El nombre es @name
+                El pedido #25 incluye muchas cosas
             </Body>
+        </Card>
+        <Card>
+            <Header>Items del pedido</Header>
+            <Body>Lalala lala la a lala s</Body>
         </Card>
     </Content>
 </Page>

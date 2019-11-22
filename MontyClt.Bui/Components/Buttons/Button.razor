@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
 @using MontyClt.Bui.Components.Text
 
-<button class="button @State">
+<button class="button @State" @onclick="OnClick">
     @if (!string.IsNullOrEmpty(Icon))
     {
         <Icon Name="@Icon" />

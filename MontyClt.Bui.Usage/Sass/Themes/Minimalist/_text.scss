@@ -1,0 +1,21 @@
+﻿body {
+    font-family: Poppins,Helvetica,sans-serif;
+}
+
+.badge {
+    .primary {
+        background-color: blue;
+    }
+
+    .success {
+        background-color: green;
+    }
+
+    .warning {
+        background-color: yellow;
+    }
+
+    .danger {
+        background-color: red;
+    }
+}

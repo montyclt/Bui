@@ -1,0 +1,21 @@
+﻿.card {
+    background-color: white;
+    box-shadow: 0 0 13px 0 rgba(82,63,105,.2);
+    border-radius: 4px;
+
+    .header {
+        padding: 15px 25px;
+        font-weight: bold;
+        font-size: larger;
+        border-bottom: 1px solid #ebedf2;
+    }
+
+    .body {
+        padding: 15px 25px;
+    }
+
+    .footer {
+        padding: 15px 25px;
+        border-top: 1px solid #ebedf2;
+    }
+}

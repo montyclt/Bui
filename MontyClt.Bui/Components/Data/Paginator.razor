@@ -1,0 +1,44 @@
+﻿@using MontyClt.Bui.Components.Buttons
+
+<div class="paginator">
+    <div class="previous">
+        <div class="button-container">
+            <Button Icon="chevron-left" OnClick="() => SetPage(CurrentPage - 1)" />
+        </div>
+    </div>
+
+    <div class="pages">
+        @for (int i = 1; i < Pages; i++)
+        {
+            var local_i = i;
+            <div class="button-container @(local_i == CurrentPage ? "active" : "")">
+                <Button OnClick="() => SetPage(local_i)">@(local_i)</Button>
+            </div>
+        }
+    </div>
+
+    <div class="next">
+        <div class="button-container">
+            <Button Icon="chevron-right" OnClick="() => SetPage(CurrentPage + 1)" />
+        </div>
+    </div>
+</div>
+
+@code
+{
+    [Parameter]
+    public int Items { get; set; }
+
+    [Parameter]
+    public int ItemsPerPage { get; set; }
+
+    [Parameter]
+    public int CurrentPage { get; set; }
+
+    private int Pages => (int) Math.Ceiling((double) Items / (double) ItemsPerPage);
+
+    void SetPage(int page)
+    {
+        CurrentPage = page;
+    }
+}
