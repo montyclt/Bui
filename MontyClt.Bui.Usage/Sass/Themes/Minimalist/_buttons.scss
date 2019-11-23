@@ -9,34 +9,34 @@
     border-radius: 4px;
 
     &.primary {
-        background-color: blue;
+        background-color: #5867dd;
 
         &:hover {
-            background-color: darken(blue, 10);
+            background-color: darken(#5867dd, 10);
         }
     }
 
     &.success {
-        background-color: green;
+        background-color: #0abb87;
 
         &:hover {
-            background-color: darken(green, 10);
+            background-color: darken(#0abb87, 10);
         }
     }
 
     &.warning {
-        background-color: yellow;
+        background-color: #ffb822;
 
         &:hover {
-            background-color: darken(yellow, 10);
+            background-color: darken(#ffb822, 10);
         }
     }
 
     &.danger {
-        background-color: red;
+        background-color: #fd397a;
 
         &:hover {
-            background-color: darken(red, 10);
+            background-color: darken(#fd397a, 10);
         }
     }
 }

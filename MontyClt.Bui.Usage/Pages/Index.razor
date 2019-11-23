@@ -7,22 +7,31 @@
 @using MontyClt.Bui.Components.Inputs
 @using MontyClt.Bui.Components.Layout
 
-<Page Title="Order" Subtitle="#25">
+<Page Title="Order" Subtitle="#25" Columns="3">
     <Actions>
         <Button OnClick="() => Console.WriteLine(52)" State="State.Primary">Provisionar</Button>
         <Button State="State.Danger">Cancelar</Button>
     </Actions>
     <Content>
-        <Card>
-            <Header>Pedido #25</Header>
-            <Body>
-                El pedido #25 incluye muchas cosas
-            </Body>
-        </Card>
-        <Card>
-            <Header>Items del pedido</Header>
-            <Body>Lalala lala la a lala s</Body>
-        </Card>
+
+        <Cell ColumnStart="1" ColumnEnd="3">
+            <Card>
+                <Header>Pedido #25</Header>
+                <Body>
+                    El pedido #25 incluye muchas cosas
+                </Body>
+            </Card>
+        </Cell>
+
+        <Cell ColumnStart="3">
+            <Card>
+                <Header>Items del pedido</Header>
+                <Body>
+                    Lalala lala la a lala s
+                </Body>
+            </Card>
+        </Cell>
+
     </Content>
 </Page>
 

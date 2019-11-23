@@ -1,0 +1,35 @@
+﻿<div class="cell" style="@GetStyleString()">
+    @ChildContent
+</div>
+
+@code
+{
+    [Parameter]
+    public int RowStart { get; set; } = 1;
+
+    [Parameter]
+    public int RowEnd { get; set; } = 0;
+
+    [Parameter]
+    public int ColumnStart { get; set; } = 1;
+
+    [Parameter]
+    public int ColumnEnd { get; set; } = 0;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (RowEnd == 0)
+            RowEnd = RowStart + 1;
+
+        if (ColumnEnd == 0)
+            ColumnEnd = ColumnStart + 1;
+    }
+
+    private string GetStyleString()
+    {
+        return $"grid-row: {RowStart} / {RowEnd}; grid-column: {ColumnStart} / {ColumnEnd};";
+    }
+}

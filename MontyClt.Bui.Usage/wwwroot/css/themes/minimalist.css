@@ -45,7 +45,8 @@ main .page .action-bar {
     font-size: larger; }
 
 main .page .content {
-  padding: 25px; }
+  padding: 25px;
+  grid-gap: 25px; }
 
 footer {
   width: 100%;
@@ -79,21 +80,21 @@ button.button {
   padding: .3rem 1rem;
   border-radius: 4px; }
   button.button.primary {
-    background-color: blue; }
+    background-color: #5867dd; }
     button.button.primary:hover {
-      background-color: #0000cc; }
+      background-color: #2e40d4; }
   button.button.success {
-    background-color: green; }
+    background-color: #0abb87; }
     button.button.success:hover {
-      background-color: #004d00; }
+      background-color: #078b64; }
   button.button.warning {
-    background-color: yellow; }
+    background-color: #ffb822; }
     button.button.warning:hover {
-      background-color: #cccc00; }
+      background-color: #eea200; }
   button.button.danger {
-    background-color: red; }
+    background-color: #fd397a; }
     button.button.danger:hover {
-      background-color: #cc0000; }
+      background-color: #fc0758; }
 
 body {
   font-family: Poppins,Helvetica,sans-serif; }
