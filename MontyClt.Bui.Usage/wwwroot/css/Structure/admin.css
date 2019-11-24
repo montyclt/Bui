@@ -16,6 +16,11 @@
       .layout header .toolbar .profile-container {
         grid-column: 3 / 4;
         text-align: right; }
+        .layout header .toolbar .profile-container > * {
+          margin-top: 13px;
+          margin-right: 15px; }
+          .layout header .toolbar .profile-container > *:last-child {
+            margin-right: 25px; }
   .layout aside {
     grid-row: 2 / 4; }
   .layout footer {
@@ -38,6 +43,10 @@
   grid-row: 1/ 1;
   text-align: right; }
 
+.page .content {
+  padding: 25px;
+  grid-gap: 25px; }
+
 .paginator {
   display: flex;
   flex-direction: row; }
@@ -50,3 +59,11 @@
       .paginator .pages .button.active {
         background-color: blue;
         color: blue; }
+
+.popover {
+  display: inline; }
+  .popover .content {
+    right: 0;
+    left: auto;
+    position: absolute;
+    z-index: 9999999; }

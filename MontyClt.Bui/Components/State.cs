@@ -6,7 +6,7 @@ namespace MontyClt.Bui.Components
     public sealed class State : IEquatable<State>
     {
         public static readonly State Primary = new State("primary");
-        public static readonly State Secundary = new State("secundary");
+        public static readonly State Secondary = new State("secondary");
         public static readonly State Success = new State("success");
         public static readonly State Warning = new State("warning");
         public static readonly State Danger = new State("danger");

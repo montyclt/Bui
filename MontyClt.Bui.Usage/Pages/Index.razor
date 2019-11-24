@@ -20,6 +20,24 @@
                 <Body>
                     El pedido #25 incluye muchas cosas
                 </Body>
+                <Footer>
+                    <MontyClt.Bui.Components.Popovers.Popover @ref="menu">
+                        <Activator>
+                            <Button OnClick="() => menu.Toggle()">Mostrar menú</Button>
+                        </Activator>
+                        <Content>
+                            <Card>
+                                <Body>
+                                    <ul>
+                                        <li>Opcion 1</li>
+                                        <li>Opcion 2</li>
+                                        <li>Opcion 3</li>
+                                    </ul>
+                                </Body>
+                            </Card>
+                        </Content>
+                    </MontyClt.Bui.Components.Popovers.Popover>
+                </Footer>
             </Card>
         </Cell>
 
@@ -37,5 +55,7 @@
 
 @code
 {
+    MontyClt.Bui.Components.Popovers.Popover menu;
+
     string name { get; set; } = "Ivan";
 }

@@ -16,6 +16,16 @@
         }
     }
 
+    &.secondary {
+        color: black;
+        background-color: transparent;
+
+        &:hover {
+            color: #5867dd;
+            background-color: #f2f3f7;
+        }
+    }
+
     &.success {
         background-color: #0abb87;
 

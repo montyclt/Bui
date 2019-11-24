@@ -1,0 +1,10 @@
+﻿.popover {
+    display: inline;
+
+    .content {
+        right: 0;
+        left: auto;
+        position: absolute;
+        z-index: 9999999;
+    }
+}

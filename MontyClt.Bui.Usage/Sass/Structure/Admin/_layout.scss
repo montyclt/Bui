@@ -23,6 +23,15 @@
             .profile-container {
                 grid-column: 3 / 4;
                 text-align: right;
+
+                > * {
+                    margin-top: 13px;
+                    margin-right: 15px;
+
+                    &:last-child {
+                        margin-right: 25px;
+                    }
+                }
             }
         }
     }

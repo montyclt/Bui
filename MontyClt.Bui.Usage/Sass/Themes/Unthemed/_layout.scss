@@ -17,20 +17,12 @@ aside {
 main {
     .page {
         .action-bar {
-            padding: 25px;
+            padding: 5px 25px;
             border-bottom: 2px solid black;
 
             .title {
-                font-size: x-large;
+                font-weight: bolder;
             }
-
-            .subtitle {
-                font-size: larger;
-            }
-        }
-
-        .content {
-            padding: 25px;
         }
     }
 }

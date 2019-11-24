@@ -1,0 +1,42 @@
+﻿@using Microsoft.JSInterop
+@inject IJSRuntime Js
+
+@Activator
+<div class="content" role="tooltip" style="@(_isVisible ? "display: block;" : "display: none;")">
+    @Content
+</div>
+
+
+@code
+{
+    [Parameter]
+    public RenderFragment Activator { get; set; }
+
+    [Parameter]
+    public RenderFragment Content { get; set; }
+
+    [Parameter]
+    public Placement Placement { get; set; }
+
+    private bool _isVisible;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //await Js.InvokeVoidAsync();
+    }
+
+    public void Hide()
+    {
+        _isVisible = false;
+    }
+
+    public void Show()
+    {
+        _isVisible = true;
+    }
+
+    public void Toggle()
+    {
+        _isVisible = !_isVisible;
+    }
+}

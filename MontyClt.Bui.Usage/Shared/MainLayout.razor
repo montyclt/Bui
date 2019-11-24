@@ -1,13 +1,32 @@
 ﻿@inherits LayoutComponentBase
 
+@using MontyClt.Bui.Components
+@using MontyClt.Bui.Components.Buttons
+@using MontyClt.Bui.Components.Cards
+@using MontyClt.Bui.Components.Popovers
+
+@inject IJSRuntime JS
+
 <MontyClt.Bui.Components.Layout.Layout>
     <Logo>Logo here</Logo>
     <Searcher>
         <input type="text" placeholder="Buscar" />
     </Searcher>
     <Profile>
-        Notificaciones
-        Hola Ivan
+        <Button State="State.Secondary" @onclick="ChangeTheme">Cambiar tema</Button>
+        <Button State="State.Secondary">Notificaciones</Button>
+        <Popover @ref="profileCard">
+            <Activator>
+                <Button State="State.Secondary" @onclick="ShowProfileCard">Hola Ivan</Button>
+            </Activator>
+            <Content>
+                <Card>
+                    <Body>
+                        Ivan es un buen tipo.
+                    </Body>
+                </Card>
+            </Content>
+        </Popover>
     </Profile>
     <Content>
         @Body
@@ -19,3 +38,18 @@
         Copyright &copy; Ivan Montilla
     </Footer>
 </MontyClt.Bui.Components.Layout.Layout>
+
+@code
+{
+    Popover profileCard;
+
+    async void ShowProfileCard()
+    {
+        profileCard.Toggle();
+    }
+
+    async Task ChangeTheme()
+    {
+        await JS.InvokeVoidAsync("BuiUsg.changeTheme");
+    }
+}
