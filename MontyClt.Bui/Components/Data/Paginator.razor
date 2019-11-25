@@ -8,13 +8,17 @@
     </div>
 
     <div class="pages">
-        @for (int i = 1; i < Pages; i++)
-        {
-            var local_i = i;
-            <div class="button-container @(local_i == CurrentPage ? "active" : "")">
-                <Button OnClick="() => SetPage(local_i)">@(local_i)</Button>
-            </div>
-        }
+        <ButtonGroup>
+            @for (int i = 1; i < Pages; i++)
+            {
+                var local_i = i;
+                <Button OnClick="() => SetPage(local_i)"
+                        State="State.Primary"
+                        AdditionalClasses="@(local_i == CurrentPage ? "active" : "")">
+                    @(local_i)
+                </Button>
+            }
+        </ButtonGroup>
     </div>
 
     <div class="next">

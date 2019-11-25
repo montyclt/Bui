@@ -1,10 +1,16 @@
 ﻿@using Microsoft.JSInterop
 @inject IJSRuntime Js
 
-@Activator
-<div class="content" role="tooltip" style="@(_isVisible ? "display: block;" : "display: none;")">
-    @Content
+<div class="popover" id="popover-@Guid">
+    <div class="activator" style="display: inline;">
+        @Activator
+    </div>
+
+    <div class="content @Placement" role="tooltip" style="@(_isVisible ? "display: block;" : "display: none;")">
+        @Content
+    </div>
 </div>
+
 
 
 @code
@@ -16,14 +22,20 @@
     public RenderFragment Content { get; set; }
 
     [Parameter]
-    public Placement Placement { get; set; }
+    public Placement Placement { get; set; } = Placement.Auto;
 
     private bool _isVisible;
 
-    protected override async Task OnInitializedAsync()
+    private Guid Guid { get; } = Guid.NewGuid();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        //await Js.InvokeVoidAsync();
+        await Js.InvokeVoidAsync("Bui.popper", $"#popover-{Guid} > .activator",
+            $"#popover-{Guid} > .content", Placement.ToString());
     }
+
+    public bool IsOpen => _isVisible;
+    public bool IsClosed => !IsOpen;
 
     public void Hide()
     {

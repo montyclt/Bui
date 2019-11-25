@@ -2,9 +2,13 @@
     display: inline;
 
     .content {
-        right: 0;
-        left: auto;
+        margin: 8px;
         position: absolute;
         z-index: 9999999;
     }
+}
+
+.dropdown-items {
+    display: flex;
+    flex-direction: column;
 }

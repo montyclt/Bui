@@ -6,6 +6,7 @@
 @using MontyClt.Bui.Components.Data
 @using MontyClt.Bui.Components.Inputs
 @using MontyClt.Bui.Components.Layout
+@using MontyClt.Bui.Components.Popovers
 
 <Page Title="Order" Subtitle="#25" Columns="3">
     <Actions>
@@ -21,22 +22,14 @@
                     El pedido #25 incluye muchas cosas
                 </Body>
                 <Footer>
-                    <MontyClt.Bui.Components.Popovers.Popover @ref="menu">
-                        <Activator>
-                            <Button OnClick="() => menu.Toggle()">Mostrar menú</Button>
-                        </Activator>
-                        <Content>
-                            <Card>
-                                <Body>
-                                    <ul>
-                                        <li>Opcion 1</li>
-                                        <li>Opcion 2</li>
-                                        <li>Opcion 3</li>
-                                    </ul>
-                                </Body>
-                            </Card>
-                        </Content>
-                    </MontyClt.Bui.Components.Popovers.Popover>
+                    <ButtonGroup Orientation="ButtonGroup.ButtonGroupOrientation.Horizontal">
+                        <Button State="State.Primary">Guardar</Button>
+                        <Button State="State.Primary">Detener</Button>
+                    </ButtonGroup>
+
+                    <center>
+                        <Paginator Items="100" ItemsPerPage="10" />
+                    </center>
                 </Footer>
             </Card>
         </Cell>
@@ -55,7 +48,11 @@
 
 @code
 {
-    MontyClt.Bui.Components.Popovers.Popover menu;
+    Popover menu;
+    Popover _left;
+    Popover _right;
+    Popover _top;
+    Popover _bottom;
 
     string name { get; set; } = "Ivan";
 }

@@ -26,24 +26,22 @@
   .layout footer {
     grid-column: 2 / 3; }
 
-.page .action-bar {
+.page > .action-bar {
   display: grid;
   grid-template-columns: 100px 70px 1fr; }
-
-.page .title {
-  grid-column: 1 / 3;
-  grid-row: 1/ 1; }
-
-.page .subtitle {
-  grid-column: 2 / 3;
-  grid-row: 1/ 1; }
+  .page > .action-bar .title {
+    grid-column: 1 / 3;
+    grid-row: 1/ 1; }
+  .page > .action-bar .subtitle {
+    grid-column: 2 / 3;
+    grid-row: 1/ 1; }
 
 .page .actions {
   grid-column: 3 / 4;
   grid-row: 1/ 1;
   text-align: right; }
 
-.page .content {
+.page > .content {
   padding: 25px;
   grid-gap: 25px; }
 
@@ -53,17 +51,16 @@
   .paginator .pages {
     display: flex;
     flex-direction: row; }
-    .paginator .pages .button {
-      margin-left: 2px;
-      margin-right: 2px; }
-      .paginator .pages .button.active {
-        background-color: blue;
-        color: blue; }
+    .paginator .pages .button.active {
+      background-color: blue; }
 
 .popover {
   display: inline; }
   .popover .content {
-    right: 0;
-    left: auto;
+    margin: 8px;
     position: absolute;
     z-index: 9999999; }
+
+.dropdown-items {
+  display: flex;
+  flex-direction: column; }

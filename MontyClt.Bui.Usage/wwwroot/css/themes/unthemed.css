@@ -18,6 +18,7 @@ footer {
   border-top: 1px solid black; }
 
 .card {
+  background-color: white;
   border: 1px dashed black; }
   .card .header {
     padding: 15px;

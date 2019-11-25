@@ -15,18 +15,11 @@
     <Profile>
         <Button State="State.Secondary" @onclick="ChangeTheme">Cambiar tema</Button>
         <Button State="State.Secondary">Notificaciones</Button>
-        <Popover @ref="profileCard">
-            <Activator>
-                <Button State="State.Secondary" @onclick="ShowProfileCard">Hola Ivan</Button>
-            </Activator>
-            <Content>
-                <Card>
-                    <Body>
-                        Ivan es un buen tipo.
-                    </Body>
-                </Card>
-            </Content>
-        </Popover>
+        <DropdownButton Name="Hola Ivan">
+            <Button State="State.Secondary">Mi cuenta</Button>
+            <Button State="State.Secondary">Ajustes</Button>
+            <Button State="State.Danger">Cerrar sesión</Button>
+        </DropdownButton>
     </Profile>
     <Content>
         @Body
@@ -43,7 +36,7 @@
 {
     Popover profileCard;
 
-    async void ShowProfileCard()
+    void ShowProfileCard()
     {
         profileCard.Toggle();
     }

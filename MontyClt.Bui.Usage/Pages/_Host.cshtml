@@ -15,6 +15,16 @@
 
     <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script>
+        window.Bui = {
+            popper: function (activadorQuerySelector, boxQuerySelector, placement) {
+                console.log(activadorQuerySelector, boxQuerySelector, placement);
+                new Popper(document.querySelector(activadorQuerySelector),
+                    document.querySelector(boxQuerySelector), {
+                    placement: placement
+                });
+            }
+        };
+
         window.BuiUsg = {
             changeTheme: function () {
                 var el = document.querySelector("link[data-theme]");

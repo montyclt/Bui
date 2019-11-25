@@ -20,8 +20,7 @@ header .toolbar {
     display: flex;
     align-items: center; }
   header .toolbar .profile-container {
-    height: 100%;
-    padding-right: 20px; }
+    height: 100%; }
 
 aside {
   background-color: white;
@@ -48,20 +47,39 @@ footer {
   box-shadow: 0 10px 30px 0 rgba(82, 63, 105, 0.08);
   padding: 20px; }
 
-.card {
+.card, .popover .content {
   background-color: white;
   box-shadow: 0 0 13px 0 rgba(82, 63, 105, 0.2);
   border-radius: 4px; }
-  .card .header {
+  .card .header, .popover .content .header {
     padding: 15px 25px;
     font-weight: bold;
     font-size: larger;
     border-bottom: 1px solid #ebedf2; }
-  .card .body {
+  .card .body, .popover .content .body {
     padding: 15px 25px; }
-  .card .footer {
+  .card .footer, .popover .content .footer {
     padding: 15px 25px;
     border-top: 1px solid #ebedf2; }
+
+.button-group {
+  display: flex; }
+  .button-group.vertical {
+    flex-direction: column; }
+    .button-group.vertical button.button {
+      border-radius: unset !important; }
+      .button-group.vertical button.button:first-child {
+        border-radius: 4px 4px 0 0 !important; }
+      .button-group.vertical button.button:last-child {
+        border-radius: 0 0 4px 4px !important; }
+  .button-group.horizontal {
+    flex-direction: row; }
+    .button-group.horizontal button.button {
+      border-radius: unset !important; }
+      .button-group.horizontal button.button:first-child {
+        border-radius: 4px 0 0 4px !important; }
+      .button-group.horizontal button.button:last-child {
+        border-radius: 0 4px 4px 0 !important; }
 
 button.button {
   border: 0;
@@ -74,25 +92,25 @@ button.button {
   border-radius: 4px; }
   button.button.primary {
     background-color: #5867dd; }
-    button.button.primary:hover {
+    button.button.primary.hover, button.button.primary:hover {
       background-color: #2e40d4; }
   button.button.secondary {
     color: black;
     background-color: transparent; }
-    button.button.secondary:hover {
+    button.button.secondary.hover, button.button.secondary:hover {
       color: #5867dd;
       background-color: #f2f3f7; }
   button.button.success {
     background-color: #0abb87; }
-    button.button.success:hover {
+    button.button.success.hover, button.button.success:hover {
       background-color: #078b64; }
   button.button.warning {
     background-color: #ffb822; }
-    button.button.warning:hover {
+    button.button.warning.hover, button.button.warning:hover {
       background-color: #eea200; }
   button.button.danger {
     background-color: #fd397a; }
-    button.button.danger:hover {
+    button.button.danger.hover, button.button.danger:hover {
       background-color: #fc0758; }
 
 body {
@@ -131,3 +149,9 @@ input {
   margin: 0;
   list-style: none;
   border: 0; }
+
+.popover .content {
+  box-shadow: 0 0 13px 0 rgba(82, 63, 105, 0.7) !important; }
+
+.dropdown-items > *:not(:last-child) {
+  margin-bottom: 10px; }
