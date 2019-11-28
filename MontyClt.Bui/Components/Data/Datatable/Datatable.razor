@@ -1,0 +1,36 @@
+﻿@typeparam TItem
+
+<div class="datatable">
+    <table>
+        <thead>
+            <tr>
+                @foreach (var column in Columns.ToArray())
+                {
+                    <th>@column.Header</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Items)
+            {
+                <tr>
+                    @foreach (var column in Columns.ToArray())
+                    {
+                        <td>@column.Item</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <Paginator />
+</div>
+
+@code
+{
+    [Parameter]
+    public IEnumerable<TItem> Items { get; set; }
+
+    [Parameter]
+    public IEnumerable<Column> Columns { get; set; }
+}

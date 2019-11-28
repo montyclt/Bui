@@ -4,11 +4,12 @@
 @using MontyClt.Bui.Components.Buttons
 @using MontyClt.Bui.Components.Cards
 @using MontyClt.Bui.Components.Data
+@using MontyClt.Bui.Components.Data.Datatable
 @using MontyClt.Bui.Components.Inputs
 @using MontyClt.Bui.Components.Layout
 @using MontyClt.Bui.Components.Popovers
 
-<Page Title="Order" Subtitle="#25" Columns="3">
+<Page Title="Order" Subtitle="#25" Columns="3" Rows="2">
     <Actions>
         <Button OnClick="() => Console.WriteLine(52)" State="State.Primary">Provisionar</Button>
         <Button State="State.Danger">Cancelar</Button>
@@ -38,7 +39,18 @@
             <Card>
                 <Header>Items del pedido</Header>
                 <Body>
-                    Lalala lala la a lala s
+                    
+                </Body>
+            </Card>
+        </Cell>
+
+        <Cell ColumnStart="1" RowStart="2">
+            <Card>
+                <Body>
+                    <Datatable Items="Individuals">
+                        <Column Header="Nombre" Item="@("aaa")" Sortable="true" />
+                        <Column Header="Apellidos" Item="@("bbb")" Sortable="true"/>
+                    </Datatable>
                 </Body>
             </Card>
         </Cell>
@@ -55,4 +67,29 @@
     Popover _bottom;
 
     string name { get; set; } = "Ivan";
+
+    class Individual
+    {
+        public string Name { get; set; }
+        public string LastName { get; set; }
+    }
+
+    IEnumerable<Individual> Individuals = new Individual[]
+    {
+        new Individual
+        {
+            Name = "IVAN",
+            LastName = "MONTILLA"
+        },
+        new Individual
+        {
+            Name = "JOSÉ",
+            LastName = "BELLIDO"
+        },
+        new Individual
+        {
+            Name = "CARLA",
+            LastName = "PLANES"
+        }
+    };
 }
