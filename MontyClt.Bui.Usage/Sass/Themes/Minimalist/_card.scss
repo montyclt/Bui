@@ -12,6 +12,10 @@
 
     .body {
         padding: 15px 25px;
+
+        &.fit {
+            padding: 0;
+        }
     }
 
     .footer {

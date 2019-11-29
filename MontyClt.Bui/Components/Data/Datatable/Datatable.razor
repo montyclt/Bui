@@ -4,26 +4,32 @@
     <table>
         <thead>
             <tr>
+                @if (IsSelectable)
+                {
+                    <th class="selectable"><input type="checkbox" @bind="_allItemsSelected" /></th>
+                }
                 @foreach (var column in Columns.ToArray())
                 {
-                    <th>@column.Header</th>
+                    <th @key="column" class="@(column.Sortable ? "sortable" : "")">@column.Header</th>
                 }
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Items)
             {
-                <tr>
+                <tr @key="item">
+                    @if (IsSelectable)
+                    {
+                        <td class="selectable"><input type="checkbox" /></td>
+                    }
                     @foreach (var column in Columns.ToArray())
                     {
-                        <td>@column.Item</td>
+                        <td>@column.Content.Invoke(item)</td>
                     }
                 </tr>
             }
         </tbody>
     </table>
-
-    <Paginator />
 </div>
 
 @code
@@ -32,5 +38,56 @@
     public IEnumerable<TItem> Items { get; set; }
 
     [Parameter]
-    public IEnumerable<Column> Columns { get; set; }
+    public bool IsSelectable { get; set; } = false;
+
+    [Parameter]
+    public IEnumerable<Column<TItem>> Columns { get; set; }
+
+    private bool _selectedAll;
+
+    private List<TItem> SelectedItems = new List<TItem>();
+
+    private void OnSelected(TItem item, bool selected)
+    {
+        if (selected)
+            SelectedItems.Add(item);
+        else
+            SelectedItems.Remove(item);
+
+        if (AllItemsAreSelected())
+            AllSelected();
+    }
+
+    private void OnSelectedAll(bool selected)
+    {
+        SelectedItems.Clear();
+        if (selected)
+            SelectedItems.AddRange(Items);
+    }
+
+    private bool IsSelected(TItem item)
+    {
+        return SelectedItems.Contains(item);
+    }
+
+    private bool _allItemsSelected = false;
+
+    private bool AllItemsAreSelected()
+    {
+        return SelectedItems.Count() == Items.Count();
+    }
+
+    protected override void OnInitialized()
+    {
+        void AllSelectedHandler()
+        {
+            Console.WriteLine("All selected");
+        }
+
+        AllSelected += AllSelectedHandler;
+    }
+
+    private event SelectedItem AllSelected;
+
+    private delegate void SelectedItem();
 }

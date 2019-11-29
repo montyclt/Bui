@@ -1,0 +1,28 @@
+﻿.table {
+    table {
+        th, td {
+            padding: 10px 25px;
+        }
+
+        th {
+            border-bottom: 1px solid #ebedf2;
+        }
+
+        tbody {
+            tr:hover {
+                background-color: #f7f8fa;
+            }
+        }
+
+        tr:not(:last-child) {
+            border-bottom: 1px solid #ebedf2;
+        }
+    }
+}
+
+.datatable {
+    @extend .table;
+
+    th.sortable {
+    }
+}

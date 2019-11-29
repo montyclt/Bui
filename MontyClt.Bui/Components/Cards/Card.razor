@@ -8,7 +8,7 @@
 
     @if (Body != null)
     {
-        <div class="body">
+        <div class="body @(FitBody ? "fit" : "")">
             @Body
         </div>
     }
@@ -28,6 +28,9 @@
 
     [Parameter]
     public RenderFragment Body { get; set; }
+
+    [Parameter]
+    public bool FitBody { get; set; }
 
     [Parameter]
     public RenderFragment Footer { get; set; }

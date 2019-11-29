@@ -64,3 +64,10 @@
 .dropdown-items {
   display: flex;
   flex-direction: column; }
+
+.table, .datatable {
+  overflow-x: auto; }
+  .table table, .datatable table {
+    width: 100%; }
+    .table table th.selectable, .datatable table th.selectable, .table table td.selectable, .datatable table td.selectable {
+      width: 65px; }

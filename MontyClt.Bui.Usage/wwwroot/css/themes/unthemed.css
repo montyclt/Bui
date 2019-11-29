@@ -26,6 +26,8 @@ footer {
     border-bottom: 1px dotted black; }
   .card .body {
     padding: 15px; }
+    .card .body.fit {
+      padding: 0; }
   .card .footer {
     padding: 15px;
     border-top: 1px dotted black; }
@@ -53,3 +55,10 @@ footer {
 
 .badge .danger {
   background-color: red; }
+
+.table table, .datatable table {
+  border: 1px dashed black; }
+  .table table th, .datatable table th {
+    border-bottom: 1px solid black; }
+  .table table tr:not(:last-child), .datatable table tr:not(:last-child) {
+    border-bottom: 1px dotted black; }

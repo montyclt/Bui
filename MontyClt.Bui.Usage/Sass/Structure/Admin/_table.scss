@@ -1,0 +1,18 @@
+﻿.table {
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+
+        th.selectable, td.selectable {
+            width: 65px;
+        }
+    }
+}
+
+.datatable {
+    @extend .table;
+
+    th.sortable {
+    }
+}

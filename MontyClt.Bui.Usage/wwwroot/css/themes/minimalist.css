@@ -58,6 +58,8 @@ footer {
     border-bottom: 1px solid #ebedf2; }
   .card .body, .popover .content .body {
     padding: 15px 25px; }
+    .card .body.fit, .popover .content .body.fit {
+      padding: 0; }
   .card .footer, .popover .content .footer {
     padding: 15px 25px;
     border-top: 1px solid #ebedf2; }
@@ -128,7 +130,7 @@ body {
 .badge .danger {
   background-color: red; }
 
-input {
+input[type=text], input[type=password] {
   display: block;
   width: 100%;
   height: calc(1.5em + 1.3rem + 2px);
@@ -155,3 +157,15 @@ input {
 
 .dropdown-items > *:not(:last-child) {
   margin-bottom: 10px; }
+
+.table table th, .datatable table th, .table table td, .datatable table td {
+  padding: 10px 25px; }
+
+.table table th, .datatable table th {
+  border-bottom: 1px solid #ebedf2; }
+
+.table table tbody tr:hover, .datatable table tbody tr:hover {
+  background-color: #f7f8fa; }
+
+.table table tr:not(:last-child), .datatable table tr:not(:last-child) {
+  border-bottom: 1px solid #ebedf2; }

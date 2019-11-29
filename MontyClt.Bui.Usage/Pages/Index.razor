@@ -1,5 +1,8 @@
 ﻿@page "/"
 
+@using System.Linq
+@using System.Linq.Expressions
+
 @using MontyClt.Bui.Components
 @using MontyClt.Bui.Components.Buttons
 @using MontyClt.Bui.Components.Cards
@@ -39,19 +42,21 @@
             <Card>
                 <Header>Items del pedido</Header>
                 <Body>
-                    
+
                 </Body>
             </Card>
         </Cell>
 
-        <Cell ColumnStart="1" RowStart="2">
-            <Card>
+        <Cell ColumnStart="1" ColumnEnd="4" RowStart="2">
+            <Card FitBody="true">
+                <Header>Clientes</Header>
                 <Body>
-                    <Datatable Items="Individuals">
-                        <Column Header="Nombre" Item="@("aaa")" Sortable="true" />
-                        <Column Header="Apellidos" Item="@("bbb")" Sortable="true"/>
-                    </Datatable>
+                    <Datatable Items="Individuals" Columns="Columns" IsSelectable="selectable" />
                 </Body>
+                <Footer>
+                    <Button OnClick="ToggleLastNameColumn">Añadir/eliminar columna de apellidos</Button>
+                    <Button OnClick="() => selectable = !selectable">Seleccionable</Button>
+                </Footer>
             </Card>
         </Cell>
 
@@ -67,6 +72,7 @@
     Popover _bottom;
 
     string name { get; set; } = "Ivan";
+    bool selectable = false;
 
     class Individual
     {
@@ -92,4 +98,18 @@
             LastName = "PLANES"
         }
     };
+
+    IList<Column<Individual>> Columns = new List<Column<Individual>>
+    {
+        new Column<Individual>("Nombre", x => x.Name),
+        new Column<Individual>("Apellidos", x => x.LastName, true),
+    };
+
+    void ToggleLastNameColumn()
+    {
+        if (Columns.Count() == 1)
+            Columns.Add(new Column<Individual>("Apellidos", x => x.LastName, true));
+        else
+            Columns.RemoveAt(1);
+    }
 }
