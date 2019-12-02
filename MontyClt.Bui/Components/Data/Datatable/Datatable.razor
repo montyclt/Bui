@@ -1,12 +1,17 @@
 ﻿@typeparam TItem
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+@using System.Linq
 
-<div class="datatable">
+@inject IJSRuntime Js
+
+<div class="datatable" id="datatable-@Guid">
     <table>
         <thead>
             <tr>
                 @if (IsSelectable)
                 {
-                    <th class="selectable"><input type="checkbox" @bind="_allItemsSelected" /></th>
+                    <th class="selectable"><input data-selectall type="checkbox" checked="@AreAllRowsSelected" @onclick="OnChangeMainCheckbox" /></th>
                 }
                 @foreach (var column in Columns.ToArray())
                 {
@@ -15,16 +20,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Items)
+            @foreach (var row in Rows)
             {
-                <tr @key="item">
+                <tr @key="row">
                     @if (IsSelectable)
                     {
-                        <td class="selectable"><input type="checkbox" /></td>
+                        <td class="selectable"><input type="checkbox" @bind="row.IsSelected" /></td>
                     }
                     @foreach (var column in Columns.ToArray())
                     {
-                        <td>@column.Content.Invoke(item)</td>
+                        <td>@column.Content.Invoke(row.Item)</td>
                     }
                 </tr>
             }
@@ -40,54 +45,40 @@
     [Parameter]
     public bool IsSelectable { get; set; } = false;
 
+    public Guid Guid { get; set; } = Guid.NewGuid();
+
     [Parameter]
     public IEnumerable<Column<TItem>> Columns { get; set; }
 
-    private bool _selectedAll;
-
-    private List<TItem> SelectedItems = new List<TItem>();
-
-    private void OnSelected(TItem item, bool selected)
-    {
-        if (selected)
-            SelectedItems.Add(item);
-        else
-            SelectedItems.Remove(item);
-
-        if (AllItemsAreSelected())
-            AllSelected();
-    }
-
-    private void OnSelectedAll(bool selected)
-    {
-        SelectedItems.Clear();
-        if (selected)
-            SelectedItems.AddRange(Items);
-    }
-
-    private bool IsSelected(TItem item)
-    {
-        return SelectedItems.Contains(item);
-    }
-
-    private bool _allItemsSelected = false;
-
-    private bool AllItemsAreSelected()
-    {
-        return SelectedItems.Count() == Items.Count();
-    }
+    public IEnumerable<Row<TItem>> Rows { get; set; }
+    public IEnumerable<Row<TItem>> SelectedRows => Rows.Where(x => x.IsSelected);
 
     protected override void OnInitialized()
     {
-        void AllSelectedHandler()
-        {
-            Console.WriteLine("All selected");
-        }
-
-        AllSelected += AllSelectedHandler;
+        Rows = Items.Select(item => new Row<TItem>(item)).ToList();
     }
 
-    private event SelectedItem AllSelected;
+    public void SelectAll()
+    {
+        foreach (var row in Rows)
+            row.IsSelected = true;
+    }
 
-    private delegate void SelectedItem();
+    public void UnselectAll()
+    {
+        foreach (var row in Rows)
+            row.IsSelected = false;
+    }
+
+    private async Task OnChangeMainCheckbox(MouseEventArgs e)
+    {
+        bool selected = await Js.InvokeAsync<bool>("Bui.datatable.checkSelectAll", Guid.ToString());
+
+        if (selected)
+            SelectAll();
+        else
+            UnselectAll();
+    }
+
+    private bool AreAllRowsSelected => SelectedRows.Count() == Rows.Count();
 }

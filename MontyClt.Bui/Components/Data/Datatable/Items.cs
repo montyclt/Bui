@@ -15,4 +15,16 @@ namespace MontyClt.Bui.Components.Data.Datatable
             Sortable = sortable;
         }
     }
+
+    public class Row<T>
+    {
+        public bool IsSelected { get; set; }
+        public T Item { get; set; }
+
+        public Row(T item, bool isSelected = false)
+        {
+            Item = item;
+            IsSelected = isSelected;
+        }
+    }
 }

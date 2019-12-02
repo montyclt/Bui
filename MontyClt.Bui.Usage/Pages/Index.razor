@@ -51,11 +51,10 @@
             <Card FitBody="true">
                 <Header>Clientes</Header>
                 <Body>
-                    <Datatable Items="Individuals" Columns="Columns" IsSelectable="selectable" />
+                    <Datatable @ref="dt" Items="Individuals" Columns="Columns" IsSelectable="true" />
                 </Body>
                 <Footer>
-                    <Button OnClick="ToggleLastNameColumn">Añadir/eliminar columna de apellidos</Button>
-                    <Button OnClick="() => selectable = !selectable">Seleccionable</Button>
+                    <Button OnClick="ShowSelected">Mostrar seleccionados</Button>
                 </Footer>
             </Card>
         </Cell>
@@ -71,6 +70,8 @@
     Popover _top;
     Popover _bottom;
 
+    Datatable<Individual> dt;
+
     string name { get; set; } = "Ivan";
     bool selectable = false;
 
@@ -78,6 +79,11 @@
     {
         public string Name { get; set; }
         public string LastName { get; set; }
+
+        public override string ToString()
+        {
+            return Name + " " + LastName;
+        }
     }
 
     IEnumerable<Individual> Individuals = new Individual[]
@@ -105,11 +111,9 @@
         new Column<Individual>("Apellidos", x => x.LastName, true),
     };
 
-    void ToggleLastNameColumn()
+    void ShowSelected()
     {
-        if (Columns.Count() == 1)
-            Columns.Add(new Column<Individual>("Apellidos", x => x.LastName, true));
-        else
-            Columns.RemoveAt(1);
+        foreach (var row in dt.SelectedRows)
+            Console.WriteLine(row.Item.ToString());
     }
 }
