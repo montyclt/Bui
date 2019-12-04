@@ -51,7 +51,20 @@
             <Card FitBody="true">
                 <Header>Clientes</Header>
                 <Body>
-                    <Datatable @ref="dt" Items="Individuals" Columns="Columns" IsSelectable="true" />
+                    <Datatable @ref="dt" Items="Individuals" IsSelectable="true">
+                        <Header>
+                            <ColumnHeader IsSortable="true" OnSort="() => Console.WriteLine(12)">Nombre</ColumnHeader>
+                            <ColumnHeader>Apellidos</ColumnHeader>
+                            <ColumnHeader>Editar</ColumnHeader>
+                        </Header>
+                        <Content>
+                            <Column>@context.Name</Column>
+                            <Column>@context.LastName</Column>
+                            <Column>
+                                <Button OnClick="() => Console.WriteLine(context.Name + context.LastName)">Editar</Button>
+                            </Column>
+                        </Content>
+                    </Datatable>
                 </Body>
                 <Footer>
                     <Button OnClick="ShowSelected">Mostrar seleccionados</Button>
@@ -109,6 +122,13 @@
     {
         new Column<Individual>("Nombre", x => x.Name),
         new Column<Individual>("Apellidos", x => x.LastName, true),
+        new Column<Individual>("Editar", x => new RenderFragment(builder =>
+        {
+            builder.OpenComponent<Button>(0);
+            builder.AddAttribute(1, "State", State.Success);
+            builder.AddAttribute(2, "ChildContent", (RenderFragment) (childBuilder => childBuilder.AddContent(3, "Ver ficha")));
+            builder.CloseComponent();
+        })),
     };
 
     void ShowSelected()

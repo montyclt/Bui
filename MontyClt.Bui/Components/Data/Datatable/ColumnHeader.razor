@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+
+@if (!IsSortable)
+{
+    <th>@ChildContent</th>
+}
+else
+{
+    <th class="sortable"><a @onclick="OnSort">@ChildContent</a></th>
+}
+
+@code
+{
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public bool IsSortable { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnSort { get; set; }
+}

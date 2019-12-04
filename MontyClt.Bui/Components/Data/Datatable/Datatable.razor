@@ -1,9 +1,4 @@
 ﻿@typeparam TItem
-@using Microsoft.AspNetCore.Components.Web
-@using Microsoft.JSInterop
-@using System.Linq
-
-@inject IJSRuntime Js
 
 <div class="datatable" id="datatable-@Guid">
     <table>
@@ -13,10 +8,7 @@
                 {
                     <th class="selectable"><input data-selectall type="checkbox" checked="@AreAllRowsSelected" @onclick="OnChangeMainCheckbox" /></th>
                 }
-                @foreach (var column in Columns.ToArray())
-                {
-                    <th @key="column" class="@(column.Sortable ? "sortable" : "")">@column.Header</th>
-                }
+                @Header
             </tr>
         </thead>
         <tbody>
@@ -27,58 +19,9 @@
                     {
                         <td class="selectable"><input type="checkbox" @bind="row.IsSelected" /></td>
                     }
-                    @foreach (var column in Columns.ToArray())
-                    {
-                        <td>@column.Content.Invoke(row.Item)</td>
-                    }
+                    @Content(row.Item)
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
-@code
-{
-    [Parameter]
-    public IEnumerable<TItem> Items { get; set; }
-
-    [Parameter]
-    public bool IsSelectable { get; set; } = false;
-
-    public Guid Guid { get; set; } = Guid.NewGuid();
-
-    [Parameter]
-    public IEnumerable<Column<TItem>> Columns { get; set; }
-
-    public IEnumerable<Row<TItem>> Rows { get; set; }
-    public IEnumerable<Row<TItem>> SelectedRows => Rows.Where(x => x.IsSelected);
-
-    protected override void OnInitialized()
-    {
-        Rows = Items.Select(item => new Row<TItem>(item)).ToList();
-    }
-
-    public void SelectAll()
-    {
-        foreach (var row in Rows)
-            row.IsSelected = true;
-    }
-
-    public void UnselectAll()
-    {
-        foreach (var row in Rows)
-            row.IsSelected = false;
-    }
-
-    private async Task OnChangeMainCheckbox(MouseEventArgs e)
-    {
-        bool selected = await Js.InvokeAsync<bool>("Bui.datatable.checkSelectAll", Guid.ToString());
-
-        if (selected)
-            SelectAll();
-        else
-            UnselectAll();
-    }
-
-    private bool AreAllRowsSelected => SelectedRows.Count() == Rows.Count();
-}

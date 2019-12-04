@@ -14,22 +14,3 @@
         </ButtonGroup>
     </Content>
 </Popover>
-
-@code
-{
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
-
-    [Parameter]
-    public string Name { get; set; }
-
-    [Parameter]
-    public State State { get; set; } = State.Secondary;
-
-    private Popover _popover;
-
-    private void TogglePopover()
-    {
-        _popover.Toggle();
-    }
-}

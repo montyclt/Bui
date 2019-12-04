@@ -1,5 +1,4 @@
-﻿@using Microsoft.AspNetCore.Components.Web
-@using MontyClt.Bui.Components.Text
+﻿@using MontyClt.Bui.Components.Text
 
 <button class="button @State @AdditionalClasses" @onclick="OnClick">
     @if (!string.IsNullOrEmpty(Icon))
@@ -8,21 +7,3 @@
     }
     <span>@ChildContent</span>
 </button>
-
-@code
-{
-    [Parameter]
-    public EventCallback<MouseEventArgs> OnClick { get; set; }
-
-    [Parameter]
-    public State State { get; set; }
-
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
-
-    [Parameter]
-    public string Icon { get; set; }
-
-    [Parameter]
-    public string AdditionalClasses { get; set; }
-}
