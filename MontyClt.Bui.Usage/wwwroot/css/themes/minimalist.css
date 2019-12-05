@@ -65,7 +65,7 @@ footer {
     border-top: 1px solid #ebedf2; }
 
 .button-group {
-  display: flex; }
+  display: inline-flex; }
   .button-group.vertical {
     flex-direction: column; }
     .button-group.vertical button.button {
