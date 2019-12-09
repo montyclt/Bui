@@ -13,12 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Sass\Themes\Dark\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="compilerconfig.json" />
-    <None Include="wwwroot\css\reboot.css" />
   </ItemGroup>
 
 </Project>

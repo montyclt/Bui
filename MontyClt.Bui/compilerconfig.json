@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "wwwroot/structure/admin.css",
+    "inputFile": "Sass/Structure/Admin/main.scss"
+  },
+  {
+    "outputFile": "wwwroot/themes/minimalist.css",
+    "inputFile": "Sass/Themes/Minimalist/main.scss"
+  },
+  {
+    "outputFile": "wwwroot/themes/unthemed.css",
+    "inputFile": "Sass/Themes/Unthemed/main.scss"
+  }
+]
