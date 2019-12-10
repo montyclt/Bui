@@ -1,9 +1,38 @@
-﻿<div class="modal">
-    @ChildContent
+﻿<div class="@GetClass()" @onclick="() => Close()">
+    <div class="container" @onclick:stopPropagation>
+        @ChildContent
+    </div>
 </div>
 
 @code
 {
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    public bool IsOpen { get; set; }
+
+    public void Open()
+    {
+        IsOpen = true;
+    }
+
+    public void Close()
+    {
+        IsOpen = false;
+    }
+
+    public void Toggle()
+    {
+        IsOpen = !IsOpen;
+    }
+
+    private string GetClass()
+    {
+        string @class = "modal";
+
+        if (IsOpen)
+            @class += " open";
+
+        return @class;
+    }
 }

@@ -12,9 +12,24 @@
 @using MontyClt.Bui.Components.Layout
 @using MontyClt.Bui.Components.Popovers
 
+<Modal @ref="mdl">
+    <Card>
+        <Header>Pedido #25</Header>
+        <Body>
+            El pedido #25 incluye muchas cosas
+        </Body>
+        <Footer>
+            <ButtonGroup Orientation="ButtonGroup.ButtonGroupOrientation.Horizontal">
+                <Button State="State.Primary">Guardar</Button>
+                <Button State="State.Primary">Detener</Button>
+            </ButtonGroup>
+        </Footer>
+    </Card>
+</Modal>
+
 <Page Title="Order" Subtitle="#25" Columns="3" Rows="2">
     <Actions>
-        <Button OnClick="() => Console.WriteLine(52)" State="State.Primary">Provisionar</Button>
+        <Button OnClick="() => mdl.Open()" State="State.Primary">Provisionar</Button>
         <Button State="State.Danger">Cancelar</Button>
     </Actions>
     <Content>
@@ -82,6 +97,8 @@
     Popover _right;
     Popover _top;
     Popover _bottom;
+
+    Modal mdl;
 
     Datatable<Individual> dt;
 

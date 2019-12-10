@@ -1,0 +1,21 @@
+﻿.modal {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(15, 15, 15, .3);
+
+    &.open {
+        display: block;
+    }
+
+    .container {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+    }
+}
