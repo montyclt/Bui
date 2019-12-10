@@ -130,7 +130,7 @@ body {
 .badge .danger {
   background-color: red; }
 
-input[type=text], input[type=password] {
+select, input[type=text], input[type=password] {
   display: block;
   width: 100%;
   height: calc(1.5em + 1.3rem + 2px);
