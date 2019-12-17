@@ -12,6 +12,8 @@
 @using MontyClt.Bui.Components.Layout
 @using MontyClt.Bui.Components.Popovers
 
+@inject MontyClt.Bui.Components.Modal.Alert Alert
+
 <Modal @ref="mdl">
     <Card>
         <Header>Pedido #25</Header>
@@ -29,6 +31,7 @@
 
 <Page Title="Order" Subtitle="#25" Columns="3" Rows="2">
     <Actions>
+        <Button State="State.Warning" OnClick="ShowWarningAlert">Show warning</Button>
         <Button OnClick="() => mdl.Open()" State="State.Primary">Provisionar</Button>
         <Button State="State.Danger">Cancelar</Button>
     </Actions>
@@ -104,6 +107,11 @@
 
     string name { get; set; } = "Ivan";
     bool selectable = false;
+
+    public async Task ShowWarningAlert(MouseEventArgs e)
+    {
+        await Alert.ShowAlertAsync("Va a ocurrir una desgracia.", "Atención", State.Danger);
+    }
 
     class Individual
     {

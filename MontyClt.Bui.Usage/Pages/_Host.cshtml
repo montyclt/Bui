@@ -14,32 +14,7 @@
     <link href="/_content/MontyClt.Bui/themes/minimalist.css" rel="stylesheet" data-theme />
 
     <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script>
-        window.Bui = {
-            popper: function (activadorQuerySelector, boxQuerySelector, placement) {
-                new Popper(document.querySelector(activadorQuerySelector), document.querySelector(boxQuerySelector), { placement: placement });
-            },
-            datatable: {
-                checkSelectAll: function (guid) {
-                    return document.querySelector("#datatable-" + guid + " input[data-selectall]").checked;
-                }
-            }
-        };
-
-        window.BuiUsg = {
-            changeTheme: function () {
-                var el = document.querySelector("link[data-theme]");
-                var theme = el.href;
-
-                if (theme.endsWith("unthemed.css")) {
-                    el.href = "/css/themes/minimalist.css";
-                }
-                else {
-                    el.href = "/css/themes/unthemed.css";
-                }
-            }
-        };
-    </script>
+    <script src="/_content/MontyClt.Bui/bui.js"></script>
 </head>
 <body>
     @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MontyClt.Bui.Startup;
 
 namespace MontyClt.Bui.Usage
 {
@@ -21,7 +22,8 @@ namespace MontyClt.Bui.Usage
         {
             services.AddRazorPages();
             services.AddServerSideBlazor()
-                .AddCircuitOptions(options => { options.DetailedErrors = true; }); ;
+                .AddCircuitOptions(options => { options.DetailedErrors = true; });
+            services.AddBui();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
