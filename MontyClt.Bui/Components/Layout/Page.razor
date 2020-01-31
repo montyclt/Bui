@@ -1,11 +1,13 @@
-﻿<div class="page">
+﻿@inherits BuiComponent
+
+<div class="page" data-bui-id="@Guid">
     <div class="action-bar">
         <div class="title">@Title</div>
         <div class="subtitle">@Subtitle</div>
         <div class="actions">@Actions</div>
     </div>
 
-    <div class="content" style="@GetStyleString()">
+    <div class="content">
         @Content
     </div>
 </div>
@@ -23,15 +25,4 @@
 
     [Parameter]
     public RenderFragment Content { get; set; }
-
-    [Parameter]
-    public uint Rows { get; set; } = 1;
-
-    [Parameter]
-    public uint Columns { get; set; } = 1;
-
-    private string GetStyleString()
-    {
-        return $"display: grid; grid-template-rows: repeat({Rows}, auto); grid-template-columns: repeat({Columns}, 1fr);";
-    }
 }

@@ -1,0 +1,21 @@
+﻿@inherits BuiComponent
+
+<div class="grid" data-bui-id="@Guid" style="@GetStyleString()">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public uint Rows { get; set; } = 1;
+
+    [Parameter]
+    public uint Columns { get; set; } = 1;
+
+    private string GetStyleString()
+    {
+        return $"display: grid; grid-template-rows: repeat({Rows}, auto); grid-template-columns: repeat({Columns}, 1fr);";
+    }
+}

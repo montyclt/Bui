@@ -33,7 +33,7 @@
     <Actions>
         <Button State="State.Warning" OnClick="ShowWarningAlert">Show warning</Button>
         <Button OnClick="() => mdl.Open()" State="State.Primary">Provisionar</Button>
-        <Button State="State.Danger">Cancelar</Button>
+        <Button @onclick="() => Console.WriteLine()" Loading="false" State="State.Danger">Cancelar</Button>
     </Actions>
     <Content>
 

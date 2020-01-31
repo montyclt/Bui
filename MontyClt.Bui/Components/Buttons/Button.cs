@@ -12,6 +12,9 @@ namespace MontyClt.Bui.Components.Buttons
         public State State { get; set; }
 
         [Parameter]
+        public bool Loading { get; set; }
+
+        [Parameter]
         public RenderFragment ChildContent { get; set; }
 
         [Parameter]
